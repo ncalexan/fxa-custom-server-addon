@@ -24,11 +24,11 @@ function isNativeUI() {
   return (Services.appinfo.ID == "{aa3c5121-dab2-40e2-81ca-7ea25febc110}");
 }
 
-function launchSetup(aWindow) {
-  aWindow.NativeWindow.toast.show(Strings.GetStringFromName("toast.message"), "short");
+function showPrefsPrompt(aWindow) {
+  Cu.import("resource://gre/modules/Prompt.jsm"); /*global Prompt*/
+
   let extras = Helper.getPrefs();
 
-  Cu.import("resource://gre/modules/Prompt.jsm"); /*global Prompt*/
   var p = new Prompt({
     window: aWindow,
     title: Strings.GetStringFromName("prompt.title"),
@@ -64,10 +64,29 @@ function launchSetup(aWindow) {
       return;
     }
 
+    aWindow.NativeWindow.toast.show(Strings.GetStringFromName("launching.toast"), "short");
+
     // Only "Launch" actually launches.
-    Cu.import("resource://gre/modules/Accounts.jsm"); /*global Accounts*/
     Accounts.launchSetup(extras);
   });
+}
+
+function launchSetup(aWindow) {
+  Cu.import("resource://gre/modules/Accounts.jsm"); /*global Accounts*/
+
+  Accounts.anySyncAccountsExist().then(
+    (exist) => {
+      if (exist) {
+        aWindow.NativeWindow.toast.show(Strings.GetStringFromName("accounts.exist.toast"), "short");
+        return;
+      }
+      showPrefsPrompt(aWindow);
+    },
+    (err) => {
+      aWindow.NativeWindow.toast.show(Strings.GetStringFromName("accounts.error.toast"), "short");
+      showPrefsPrompt(aWindow);
+    }
+  );
 }
 
 var gMenuId = null;
