@@ -4,11 +4,14 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>fxa-custom-server-addon@mozilla.com</em:id>
         <em:type>2</em:type>
-        <em:name>Create Firefox Accounts with custom server URLs</em:name>
-        <em:version>0.2</em:version>
+        <em:name>fxa-custom-server-addon</em:name>
+        <em:version>0.3</em:version>
         <em:bootstrap>true</em:bootstrap>
         <em:description>Create Firefox Accounts with custom server URLs</em:description>
         <em:creator>Mozilla Cloud Services</em:creator>
+
+        <em:iconURL>chrome://skeleton/content/icon.png</em:iconURL>
+        <em:icon64URL>chrome://skeleton/content/icon64.png</em:icon64URL>
 
         <!-- Mobile -->
         <em:targetApplication>

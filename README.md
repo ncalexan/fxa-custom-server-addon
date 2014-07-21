@@ -15,3 +15,12 @@ Account".  Tap it, and enter your custom server URLs.  Tap "Save" to
 persist your modified URLs for next time; this is especially handy if
 you are copy-and-pasting long server URLs.  Finally, tap "Launch
 setup" to start the Firefox Account setup flow.
+
+## Developer notes
+
+### To create icons
+
+```shell
+    convert -resize 48x48 -extent 48x48 -gravity center -transparent white icon_big.png content/icon.png
+    convert -resize 64x64 -extent 64x64 -gravity center -transparent white icon_big.png content/icon.png
+```
