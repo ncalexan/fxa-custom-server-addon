@@ -56,7 +56,7 @@ function showPrefsPrompt(aWindow) {
     }
 
     // Both "Save" and "Launch" write for next time.
-    extras.auth = data["auth"];
+    extras.auth = data.auth;
     extras.services.sync = data["services.sync"];
     Helper.setPrefs(extras);
 
