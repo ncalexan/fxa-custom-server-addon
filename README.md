@@ -1,26 +1,13 @@
-# Create Firefox Accounts with custom server URLs
+# DEPRECATED REPOSITORY
 
-This is a bare-bones addon that launches the Firefox Account setup
-process on Firefox for Android with custom server URLs.  Use this to
-create a Firefox Account on Android if you are self-hosting either the
-Firefox Accounts "auth" server, or the Sync 1.5 "storage" server.
+As of Firefox for Android 44, a custom addon is no longer required to
+customize Firefox Accounts and Firefox Sync server URLs.
 
-*nota bene: Mozilla's Sync 1.5 storage servers only accept accounts
- hosted by Mozilla's Firefox Account auth server.*
+The documentation at
+https://docs.services.mozilla.com/howtos/run-sync-1.5.html and
+https://docs.services.mozilla.com/howtos/run-fxa.html has been updated
+and is now the canonical documentation for configuring custom servers
+in Firefox for Android.
 
-## How to use the add-on
-
-After installing, you will have a new menu item, "Custom Firefox
-Account".  Tap it, and enter your custom server URLs.  Tap "Save" to
-persist your modified URLs for next time; this is especially handy if
-you are copy-and-pasting long server URLs.  Finally, tap "Launch
-setup" to start the Firefox Account setup flow.
-
-## Developer notes
-
-### To create icons
-
-```shell
-    convert -resize 48x48 -extent 48x48 -gravity center -transparent white icon_big.png content/icon.png
-    convert -resize 64x64 -extent 64x64 -gravity center -transparent white icon_big.png content/icon.png
-```
+The contents of this repository have been maintained in `deprecated`
+for interested parties to inspect.
